@@ -1,0 +1,22 @@
+.product-image {
+  width: auto;
+  height: auto;
+  object-fit: cover; 
+  border-radius: 8px;
+
+}
+
+.product-card{
+  border: 1px solid #ccc;
+  padding:14px;
+  border-radius:8px;
+    text-align:center;
+}
+.product-card p,.product-card ul{
+  text-align:left;
+}
+.product-card button {
+  display: block;
+  margin-left: 0;
+  text-align: left; 
+}

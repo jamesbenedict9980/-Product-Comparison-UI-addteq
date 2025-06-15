@@ -1,0 +1,79 @@
+.compare-section {
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #eee;
+  padding-top: 1rem;
+  position: relative;
+  overflow-x: auto;
+}
+.compare-section h6{
+  text-align:center;
+}
+.compare-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.compare-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.compare-card img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.compare-card ul {
+  padding-left: 0;
+  list-style: none !important;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.compare-card li {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.compare-card button {
+  margin-top: 0.5rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+/*Responsive*/
+@media (max-width: 768px) {
+  .compare-card img {
+    max-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .compare-card {
+    padding: 0.75rem;
+  }
+
+  .compare-card img {
+    max-height: 100px;
+  }
+
+  .compare-card button {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}

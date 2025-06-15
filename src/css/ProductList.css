@@ -1,0 +1,17 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.product-card ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  margin: 0;
+}
+
+.product-card ul li {
+  list-style-type: none !important;
+  padding-bottom:10px;
+}
+
