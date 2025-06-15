@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+Setup Instructions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1.) Clone the Repository or Create Project
 
-## Available Scripts
+npx create-react-app product-compare-app
+cd product-compare-app
 
-In the project directory, you can run:
 
-### `npm start`
+2) Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+/public
+  /imgs                 ← Add your product images here
+/src
+  /components           ← Home.js
+  /data                 ← products.js
+  /css                  ← CompareSection.css, ProductCard.css, ProductList.css
+  /pages                ← ProductCard, ProductList, CompareSection
+  App.js
+  index.js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+3) Install Dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+(Optional) If using icons, Bootstrap or other UI libraries:
+npm install bootstrap
 
-### `npm run build`
+Main Dependencies
+Dependency	        Version	            Purpose
+react	              ^19.1.0	Core        React library for building UI components
+react-dom	          ^19.1.0	            React DOM renderer, allows rendering to the browser
+react-scripts	       5.0.1	            Scripts and configuration used by Create React App
+react-router-dom	  ^7.6.2	            For routing/navigation between pages in React
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Testing Libraries
+Dependency	                Version	            Purpose
+@testing-library/react	    ^16.3.0	            React component testing utilities
+@testing-library/jest-dom	  ^6.6.3	            Custom DOM matchers for Jest
+@testing-library/dom	      ^10.4.0	            Low-level DOM testing utilities
+@testing-library/user-event	^13.5.0	            Simulate user interactions in tests
+web-vitals	                ^2.1.4	            For measuring site performance metrics
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4) Start the Development Server
+npm install
+npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5) Screen shots of the Output: (Main Page without compare)
+![image](https://github.com/user-attachments/assets/d4f4c4ec-20c0-4f65-adb4-592ec1988ddf)
 
-### `npm run eject`
+6) Screen shots of the Output: (Main Page with compare)
+![image](https://github.com/user-attachments/assets/c0c73bc8-6f89-4140-be91-e01c69ce9bd3)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+7) Mobile responsive using grid:
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+![image](https://github.com/user-attachments/assets/d9abe448-6e6c-47a6-9f24-400a822cd942)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+8) Implemented localStorage to store compared products, ensuring previously selected items persist even after page refresh.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const [compareIds, setCompareIds] = useState(() => {
+  const stored = localStorage.getItem("comparedProducts");
+  return stored ? JSON.parse(stored) : [];
+});
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+useEffect(() => {
+  localStorage.setItem("comparedProducts", JSON.stringify(compareIds));
+}, [compareIds]);
